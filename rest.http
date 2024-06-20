@@ -1,0 +1,51 @@
+### GET /
+POST http://localhost:8080/ HTTP/1.1
+
+### POST /auth/signup
+POST http://localhost:8080/auth/signup HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Kenan",
+    "lastName": "Kavazovic",
+  	"email": "kenan@gmail.com",
+  	"password": "Kenan123!",
+  	"confirm_password": "Kenan123!"
+}
+
+### POST /auth/login
+POST http://localhost:8080/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+  	"email": "kenan@gmail.com",
+  	"password": "Kenan123!"
+}
+
+### POST /auth/signout
+POST http://localhost:8080/auth/signout HTTP/1.1
+
+### DELETE /quotes/1
+DELETE http://localhost:8080/quotes/2 HTTP/1.1
+
+### POST /quotes
+POST http://localhost:8080/quotes/me/myquote HTTP/1.1
+Content-Type: application/json
+
+{
+  	"text": "testing"
+}
+
+### PATCH /quotes/1
+PATCH http://localhost:8080/quotes/me/myquote/5 HTTP/1.1
+Content-Type: application/json
+
+{
+  	"text": "Lorem ipsum"
+}
+
+### POST /votes/1/upvote
+POST http://localhost:8080/votes/2/upvote HTTP/1.1
+
+### POST /votes/1/downvote
+POST http://localhost:8080/votes/2/downvote HTTP/1.1

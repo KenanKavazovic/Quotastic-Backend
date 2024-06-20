@@ -1,0 +1,19 @@
+import { MiddlewareConsumer, Module } from '@nestjs/common'
+import { TypeOrmModule } from '@nestjs/typeorm'
+import { User } from '../../entities/user.entity'
+import { UsersController } from './users.controller'
+import { UsersService } from './users.service'
+import { CurrentUserMiddleware } from 'src/middleware/current-user.middleware'
+import { JwtService } from '@nestjs/jwt'
+
+@Module({
+  imports: [TypeOrmModule.forFeature([User])],
+  controllers: [UsersController],
+  providers: [UsersService, JwtService],
+  exports: [UsersService],
+})
+export class UsersModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(CurrentUserMiddleware).forRoutes('*');
+  }
+}
